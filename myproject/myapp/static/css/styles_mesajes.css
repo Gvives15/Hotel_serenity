@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('tu-imagen-de-fondo.jpg') no-repeat center center fixed; /* Cambia esto por tu imagen de fondo */
+    background-size: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-box {
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin: 0;
+    color: #333;
+}
+
+p {
+    color: #666;
+}

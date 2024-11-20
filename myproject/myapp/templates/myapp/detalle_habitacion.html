@@ -1,0 +1,36 @@
+<!-- templates/myapp/detalle_habitacion.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Habitación</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'habitaciones' %}">Habitaciones</a></li>
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="detalle-habitacion">
+            <h2>Habitación {{ habitacion.numero }}</h2>
+            {% if habitacion.imagen %}
+                <img src="{{ habitacion.imagen.url }}" alt="Imagen de la habitación {{ habitacion.numero }}" style="max-width: 100%; height: auto;">
+            {% else %}
+                <p>No hay imagen disponible para esta habitación.</p>
+            {% endif %}
+            <p>Tipo: {{ habitacion.tipo }}</p>
+            <p>Capacidad: {{ habitacion.capacidad }} huéspedes</p>
+            <p>Precio por noche: {{ habitacion.precio_noche }} €</p>
+            <p>Descripción: {{ habitacion.descripcion }}</p>
+            <a href="{% url 'reservar_habitacion' habitacion.id %}">Reservar esta habitación</a>
+        </section>
+    </main>
+</body>
+</html>

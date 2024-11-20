@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Reservas</title>
+    <link rel="stylesheet" href="{% static 'css/styles_c_h.css' %}">
+    <script src="{% static 'js/java.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'habitaciones' %}">Habitaciones y Pabellones</a></li>
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="carrito">
+            <h2>Carrito de Reservas</h2>
+
+            <!-- Enlaces a Habitaciones y Pabellones -->
+            <p>
+                <a href="{% url 'habitaciones' %}" class="btn">Ver Habitaciones</a>
+                <a href="{% url 'habitaciones' %}" class="btn">Ver Pabellones</a>
+            </p>
+
+            {% if carrito_items %}
+                <ul>
+                    {% for item_data in carrito_items %}
+                        <li class="item-container">
+                            {% if item_data.item.habitacion %}
+                                <h3>Habitación: {{ item_data.item.habitacion.numero }}</h3>
+                                <p>Capacidad: {{ item_data.item.habitacion.capacidad_personas }} personas</p>
+                                <p>Precio: ${{ item_data.item.habitacion.precio }}</p>
+                                <a href="{% url 'detalle_habitacion' item_data.item.habitacion.id %}" class="btn">Ver Detalles</a>
+                            {% elif item_data.item.pabellon %}
+                                <h3>Pabellón: {{ item_data.item.pabellon.nombre }}</h3>
+                                <p>Precio: ${{ item_data.item.pabellon.precio }}</p>
+                                <a href="{% url 'detalle_pabellon' item_data.item.pabellon.id %}" class="btn">Ver Detalles</a>
+                            {% endif %}
+
+                            <!-- Mostrar fechas específicas del item -->
+                            {% for fecha in item_data.fechas %}
+                                <p>Fechas: {{ fecha.fecha_inicio }} - {{ fecha.fecha_fin }}</p>
+                            {% endfor %}
+                            
+
+                            <!-- Botón para mostrar el formulario de eliminación -->
+                            <button onclick="toggleDeleteForm({{ item_data.item.id }})" class="btn btn-danger">Eliminar</button>
+
+                            <!-- Formulario de eliminación oculto por defecto -->
+                            <form id="delete-form-{{ item_data.item.id }}" action="{% url 'eliminar_del_carrito' item_data.item.id %}" method="post" style="display: none;">
+                                {% csrf_token %}
+                                <label for="cantidad_{{ item_data.item.id }}">Cantidad a eliminar:</label>
+                                <input type="number" id="cantidad_{{ item_data.item.id }}" name="cantidad" min="1" max="{{ item_data.item.cantidad }}" value="1">
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <p><strong>Total: ${{ total_precio }}</strong></p>
+
+                <a href="{% url 'procesar_pago' %}" class="btn">Procesar Pago - ${{ total_precio }}</a>
+
+            {% else %}
+                <p>El carrito está vacío.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

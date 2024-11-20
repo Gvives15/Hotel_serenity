@@ -1,0 +1,12 @@
+<!-- myapp/templates/myapp/editar_perfil.html -->
+{% extends "myapp/base_generic.html" %}
+
+{% block content %}
+  <h2>Editar Perfil</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Actualizar</button>
+  </form>
+  <a href="{% url 'perfil' %}">Cancelar</a>
+{% endblock %}

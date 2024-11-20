@@ -1,0 +1,114 @@
+/* styles_registro.css */
+
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Color de fondo claro */
+}
+
+.container {
+    max-width: 400px; /* Ancho máximo del contenedor */
+    margin: 50px auto; /* Centrar horizontalmente */
+    padding: 30px; /* Espaciado interno */
+    background: white; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Títulos */
+h2 {
+    text-align: center; /* Centrar el texto */
+    color: #333; /* Color del texto */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    font-size: 24px; /* Tamaño de fuente */
+}
+
+/* Formularios */
+form {
+    display: flex; /* Usar flexbox para el diseño */
+    flex-direction: column; /* Colocar los elementos en columna */
+}
+
+form label {
+    margin-bottom: 5px; /* Espacio debajo de las etiquetas */
+    font-weight: bold; /* Negrita para las etiquetas */
+    color: #555; /* Color gris para las etiquetas */
+}
+
+form input {
+    padding: 12px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espacio entre los inputs */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: border-color 0.3s; /* Transición suave para el borde */
+}
+
+form input:focus {
+    border-color: #007bff; /* Color del borde al enfocar */
+    outline: none; /* Quitar el contorno predeterminado */
+}
+
+/* Mensajes de requisitos */
+.requirements {
+    list-style-type: none; /* Ocultar viñetas de la lista */
+    padding: 0; /* Sin espaciado interno */
+    margin: 10px 0; /* Margen arriba y abajo */
+    font-size: 14px; /* Tamaño de fuente */
+    color: #555; /* Color gris */
+}
+
+.requirements li {
+    margin-bottom: 5px; /* Espacio entre los elementos de la lista */
+}
+
+/* Botones */
+form button {
+    padding: 12px; /* Espaciado interno */
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+form button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+    transform: translateY(-2px); /* Elevar ligeramente al pasar el ratón */
+}
+
+/* Párrafos y enlaces */
+p {
+    text-align: center; /* Centrar el texto */
+    color: #555; /* Color gris para el texto */
+    margin-top: 10px; /* Espacio encima del párrafo */
+}
+
+a {
+    color: #007bff; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: bold; /* Texto en negrita */
+}
+
+a:hover {
+    text-decoration: underline; /* Subrayar al pasar el ratón */
+}
+
+
+/* mensajes flash de inicio de secion */
+.alert {
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert.info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}

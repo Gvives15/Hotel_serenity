@@ -1,0 +1,251 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #8B4513; /* Marrón */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #8B4513;
+}
+
+
+/* Estilos para las cartas de habitaciones y pabellones */
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.productos ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.productos li {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.productos li:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.productos h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.productos p {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.productos .btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #8B4513;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.productos .btn:hover {
+    background-color: #A0522D; /* Marrón más claro */
+}
+
+/* Estilos para el carrito */
+.carrito {
+    position: relative;
+    left: 0;
+    top: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carrito ul {
+    list-style: none;
+    padding: 0;
+}
+
+.carrito li {
+    margin-bottom: 10px;
+}
+
+.carrito p {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: right;
+}
+
+.carrito .btn {
+    background-color: #8B4513;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.carrito .btn:hover {
+    background-color: #A0522D;
+}
+
+/* detalles de los pabellones y las habitaciones*/
+
+.detalle-producto {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-producto img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.detalle-producto h2 {
+    color: #8B4513;
+    margin-bottom: 15px;
+}
+
+.detalle-producto p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.detalle-producto .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8B4513;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.detalle-producto .btn:hover {
+    background-color: #A0522D;
+}
+
+/*cartas y contenedores de el carrito*/
+
+/* Contenedor de cada ítem en el carrito */
+.item-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Estilos para los encabezados dentro del contenedor */
+.item-container h3 {
+    margin-top: 0;
+}
+
+/* Estilos para los párrafos dentro del contenedor */
+.item-container p {
+    margin: 5px 0;
+}
+
+
+
+
+/* Estilos para los botones */
+.item-container .btn {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.item-container .btn-primary {
+    background-color: #007bff;
+}
+
+.item-container .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.item-container .btn-danger {
+    background-color: #dc3545;
+}
+
+.item-container .btn-danger:hover {
+    background-color: #c82333;
+}
+/* Agrega estilos para las secciones de éxito y fallo de pago */
+.carrito h2 {
+    color: #4CAF50; /* Color verde para éxito */
+}
+
+.carrito h2 i {
+    margin-right: 10px;
+}
+
+.carrito .btn {
+    margin-top: 20px;
+}
+
+/* Personalización adicional */
+.carrito p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+
+

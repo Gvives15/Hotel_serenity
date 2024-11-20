@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pabellones del Hotel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #efe2cc; /* Fondo beige cálido */
+            color: #4b3b30; /* Texto marrón oscuro */
+        }
+        header {
+            background: url('../../static/img/pexels-tobias-benito.jpg') no-repeat center center/cover;
+            height: 60vh;
+            color: #f5efe6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background-color: rgba(90, 36, 19, 0.493);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+         h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgb(0, 0, 0);
+        }
+        header p{
+            text-shadow: 2px 2px 4px rgb(0, 0, 0);
+        }
+        nav {
+            background: rgba(75, 59, 48, 0.8); /* Fondo marrón oscuro semitransparente */
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #f5efe6; /* Color beige para enlaces */
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #d4a373; /* Color dorado */
+        }
+        .container {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .pabellon {
+            background: #fff7ec; /* Fondo color crema */
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 20px;
+        }
+        .pabellon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        .pabellon h2 {
+            font-size: 2em;
+            color: #4b3b30; /* Marrón oscuro */
+            text-align: center;
+            margin-top: 0;
+        }
+        .pabellon p {
+            color: #6f584a; /* Marrón suave */
+            text-align: justify;
+        }
+        .btn-reservar {
+            background-color: #d4a373; /* Botón dorado */
+            color: #4b3b30; /* Texto marrón oscuro */
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-reservar:hover {
+            background-color: #c78b5b; /* Dorado más oscuro */
+            transform: scale(1.05);
+        }
+        /* Estilos para la galería de imágenes */
+        .imagenes {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .imagenes img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        /* Estilos de testimonios */
+        .testimonio {
+            background-color: #f5efe6; /* Fondo beige */
+            border-left: 4px solid #d4a373; /* Borde dorado */
+            padding: 15px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .testimonio span {
+            font-weight: bold;
+            color: #4b3b30;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#pabellon1">Pabellón 1</a>
+        <a href="#pabellon2">Pabellón 2</a>
+        <a href="#pabellon3">Pabellón 3</a>
+    </nav>
+    <header>
+        <h1>Bienvenidos a Nuestro Hotel</h1>
+        <p>Disfruta de una experiencia única en nuestros pabellones</p>
+    </header>
+    <div class="container">
+        <!-- Información detallada del Pabellón 1 -->
+        <div class="pabellon" id="pabellon1">
+            <h2>Pabellón 1</h2>
+            <p>El Pabellón 1 ofrece una vista espectacular del océano y cuenta con habitaciones con terraza privada y acceso a la piscina.</p>
+            <div class="imagenes">
+                <img src="../../static/img/pabellon1_1.jpg" alt="Vista del Pabellón 1">
+                <img src="../../static/img/pabellon1_2.jpg" alt="Habitación del Pabellón 1">
+                <img src="../../static/img/pabellon1_3.jpg" alt="Piscina del Pabellón 1">
+            </div>
+            <div class="testimonio">
+                <p>"Un lugar increíble para descansar y disfrutar del mar. ¡Volveremos el próximo verano!" <span>- José M.</span></p>
+            </div>
+            
+        </div>
+
+        <!-- Información detallada del Pabellón 2 -->
+        <div class="pabellon" id="pabellon2">
+            <h2>Pabellón 2</h2>
+            <p>El Pabellón 2 está rodeado de naturaleza, ideal para quienes buscan tranquilidad. Con áreas de meditación y acceso a jardines.</p>
+            <div class="imagenes">
+                <img src="../../static/img/pabellon2_1.jpg" alt="Jardines del Pabellón 2">
+                <img src="../../static/img/pabellon2_2.jpg" alt="Área de meditación del Pabellón 2">
+                <img src="../../static/img/pabellon2_3.jpg" alt="Habitación del Pabellón 2">
+            </div>
+            <div class="testimonio">
+                <p>"Perfecto para desconectar y relajarse rodeado de naturaleza. Un paraíso escondido." <span>- Ana R.</span></p>
+            </div>
+
+        </div>
+
+        <!-- Información detallada del Pabellón 3 -->
+        <div class="pabellon" id="pabellon3">
+            <h2>Pabellón 3</h2>
+            <p>El Pabellón 3 es ideal para familias, con habitaciones conectadas, áreas de juegos y actividades para los más pequeños.</p>
+            <div class="imagenes">
+                <img src="../../static/img/pabellon3_1.jpg" alt="Área de juegos del Pabellón 3">
+                <img src="../../static/img/pabellon3_2.jpg" alt="Piscina para familias del Pabellón 3">
+                <img src="../../static/img/pabellon3_3.jpg" alt="Habitación familiar del Pabellón 3">
+            </div>
+            <div class="testimonio">
+                <p>"Los niños se divirtieron muchísimo y nosotros pudimos descansar. ¡Muy recomendado para familias!" <span>- Marta L.</span></p>
+            </div>
+           
+        </div>
+    </div>
+</body>
+</html>

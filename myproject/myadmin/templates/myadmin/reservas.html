@@ -1,0 +1,60 @@
+<!-- templates/myadmin/reservas.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas</title>
+    <link rel="stylesheet" ```html
+    href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Reservas</h1>
+    <a href="{% url 'crear_reserva' %}">Crear Reserva</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reserva in reservas %}
+            <tr>
+                <td>{{ reserva.cliente.nombre }}</td>
+                <td>{{ reserva.fecha_inicio }}</td>
+                <td>{{ reserva.fecha_fin }}</td>
+                <td>
+                    <a href="{% url 'editar_reserva' reserva.id %}">Editar</a>
+                    <a href="{% url 'eliminar_reserva' reserva.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+``` ### 7. **crear_reserva.html**
+
+```html
+<!-- templates/myadmin/crear_reserva.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Reserva</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Crear Reserva</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="{% url 'reservas' %}">Volver a la lista de reservas</a>
+</body>
+</html>

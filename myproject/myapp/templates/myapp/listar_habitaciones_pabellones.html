@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitaciones y Pabellones</title>
+    <link rel="stylesheet" href="{% static 'css/styles_c_h.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'habitaciones' %}">Habitaciones y Pabellones</a></li>
+                <li><a href="{% url 'ver_carrito' %}">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="productos">
+            
+            <h2 id="habitaciones">Habitaciones</h2>
+            <ul>
+                {% for habitacion in habitaciones %}
+                <li>
+                    <h3>{{ habitacion.numero }}</h3>
+                    <p>Capacidad: {{ habitacion.capacidad_personas }} personas</p>
+                    <p>Precio: ${{ habitacion.precio }}</p>
+                    <a href="{% url 'detalle_habitacion' habitacion.id %}" class="btn">Ver Detalles</a>
+                </li>
+                {% endfor %}
+            </ul>
+        
+            <h2 id="pabellones">Pabellones</h2>  
+            <ul>
+                {% for pabellon in pabellones %}
+                <li>
+                    <h3>{{ pabellon.nombre }}</h3>
+                    <p>Precio: ${{ pabellon.precio_dia }}</p>
+                    <form action="{% url 'agregar_al_carrito' 'pabellon' pabellon.id %}" method="post">
+                        {% csrf_token %}
+                        <label for="cantidad_{{ pabellon.id }}">Cantidad:</label>
+                        <input type="number" id="cantidad_{{ pabellon.id }}" name="cantidad" min="1" value="1">
+                        <button type="submit">Agregar al Carrito</button>
+                    </form>
+
+                    <a href="{% url 'detalle_pabellon' pabellon.id %}" class="btn">Ver Detalles</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            
+        </section>
+    </main>
+</body>
+</html>

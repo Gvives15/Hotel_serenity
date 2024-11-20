@@ -1,0 +1,39 @@
+<div class="sidebar" id="sidebar-wrapper">
+    <div class="sidebar-heading text-white text-center py-4">Menu</div>
+    <div class="list-group list-group-flush">
+        <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action bg-dark"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        
+        <!-- Sección Habitaciones -->
+        <div class="dropdown">
+            <a href="#" class="list-group-item list-group-item-action bg-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bed"></i> Habitaciones</a>
+            <div class="dropdown-menu bg-dark">
+                <a href="{% url 'listar_habitaciones' %}" class="dropdown-item bg-dark"><i class="fas fa-list"></i> Listar Habitaciones</a>
+                <a href="{% url 'crear_habitacion' %}" class="dropdown-item bg-dark"><i class="fas fa-plus"></i> Crear Habitación</a>
+            </div>
+        </div>
+
+        <!-- Sección Reservas -->
+        <div class="dropdown">
+            <a href="#" class="list-group-item list-group-item-action bg-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-calendar-check"></i> Reservas</a>
+            <div class="dropdown-menu bg-dark">
+                <a href="{% url 'listar_reservas' %}" class="dropdown-item bg-dark"><i class="fas fa-list"></i> Listar Reservas</a>
+                <a href="{% url 'crear_reserva' %}" class="dropdown-item bg-dark"><i class="fas fa-plus"></i> Crear Reserva</a>
+            </div>
+        </div>
+
+        <!-- Sección Clientes -->
+        <div class="dropdown">
+            <a href="#" class="list-group-item list-group-item-action bg-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i> Clientes</a>
+            <div class="dropdown-menu bg-dark">
+                <a href="" class="dropdown-item bg-dark"><i class="fas fa-list"></i> Listar Clientes</a>
+                <a href="" class="dropdown-item bg-dark"><i class="fas fa-plus"></i> Crear Cliente</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% load static %}
+<!-- En el <head> de dashboard.html -->
+    <link rel="stylesheet" href="{% static 'css/menu_lateral.css' %}">
+
+    <!-- Antes de cerrar el <body> de dashboard.html -->
+    <script src="{% static 'js/menu_lateral.js' %}"></script>

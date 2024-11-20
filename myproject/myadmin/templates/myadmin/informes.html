@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informes - Panel de Administración del Hotel</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles_myadmin.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>Panel de Administración del Hotel</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'reservas' %}">Gestión de Reservas</a></li>
+            <li><a href="{% url 'habitaciones' %}">Gestión de Habitaciones</a></li>
+            <li><a href="{% url 'clientes' %}">Gestión de Clientes</a></li>
+            <li><a href="{% url 'informes' %}">Informes</a></li>
+            <li><a href="{% url 'personal' %}">Gestión de Personal</a></li>
+            <li><a href="{% url 'reportes' %}">Generar Reportes</a></li>
+            <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+        </ul>
+    </nav>
+</header ```html
+<main>
+    <section id="informes">
+        <h2>Informes</h2>
+        <p>Aquí puedes generar y ver informes relacionados con el hotel.</p>
+        <!-- Aquí puedes agregar opciones para generar informes -->
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2023 Hotel Admin Panel</p>
+</footer>
+
+</body>
+</html>

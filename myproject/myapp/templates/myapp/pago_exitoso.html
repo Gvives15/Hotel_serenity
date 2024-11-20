@@ -1,0 +1,15 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}
+    Pago Exitoso
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center">¡Pago Realizado con Éxito!</h2>
+        <p class="text-center">Gracias por tu pago. Tu reserva ha sido confirmada.</p>
+        <div class="text-center">
+            <a href="{% url 'mis_reservas' %}" class="btn btn-primary">Volver a Mis Reservas</a>
+        </div>
+    </div>
+{% endblock %}

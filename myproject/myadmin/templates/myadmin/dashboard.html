@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/styles_reservas.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        #menu-toggle {
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        {% include 'myadmin/menu_lateral.html' %}
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">
+                    <i class="fas fa-bars"></i> <!-- Ícono de hamburguesa -->
+                </button>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user"></i> {{ user.username }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'perfil' %}">Mi Perfil</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'logout_myadmin' %}">Cerrar Sesión</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login_myadmin' %}">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'registro_myadmin' %}">Registrarse</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+
+            <div class="container-fluid mt-4">
+                <h1 class="h3 mb-4">Bienvenido al Dashboard</h1>
+                <p>Aquí puedes gestionar tus reservas, habitaciones y más.</p>
+
+                <!-- Estadísticas -->
+                <h2 class="h4 mb-3">Estadísticas</h2>
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-white bg-primary">
+                            <div class="card-header">Total Reservas</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ total_reservas }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-white bg-success">
+                            <div class="card-header">Reservas Activas</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ reservas_activas }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-white bg-danger">
+                            <div class="card-header">Reservas Canceladas</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ reservas_canceladas }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-white bg-info">
+                            <div class="card-header">Total Habitaciones</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ total_habitaciones }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráfico de Reservas -->
+                <h2 class="h4 mb-3">Gráfico de Reservas por Mes</h2>
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <canvas id="reservasChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+
+                <!-- Accesos Rápidos -->
+                <h2 class="h4 mb-3">Accesos Rápidos</h2>
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <a href="{% url 'crear_reserva' %}" class="btn btn-primary btn-block">Crear Nueva Reserva</a>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <a href="{% url 'listar_reservas' %}" class="btn btn-secondary btn-block">Listar Reservas</a>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <a href="{% url 'listar_habitaciones' %}" class="btn btn-info btn-block">Listar Habitaciones</a>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <a href="{% url 'crear_habitacion' %}" class="btn btn-success btn-block">Crear Nueva Habitación</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('reservasChart').getContext('2d');
+        var reservasChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'], // Cambia esto por tus datos
+                datasets: [{
+                    label: 'Reservas',
+                    data: [12, 19, 3, 5, 2, 3], // Cambia esto por tus datos
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="{% static 'js/menu_lateral.js' %}"></script> <!-- JS del menú lateral -->
+</body>
+</html>

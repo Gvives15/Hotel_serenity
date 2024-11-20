@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Habitación</title>
+    <link rel="stylesheet" href="{% static 'css/styles_myadmin.css' %}">  <!-- Enlace al CSS -->
+    <script src="{% static 'js/scripts.js' %}" defer></script>  <!-- Enlace al JS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Habitación</h1>
+        <form action="{% url 'editar_habitacion' form.instance.pk %}" method="POST">  <!-- Usar form.instance.pk para obtener el ID -->
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Renderiza el formulario automáticamente -->
+            <button type="submit">Actualizar Habitación</button>
+            <a href="{% url 'listar_habitaciones' %}" class="btn-cancel">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

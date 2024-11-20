@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Habitaciones</title>
+    <link rel="stylesheet" href="{% static 'css/styles_myadmin.css' %}">  <!-- Enlace al CSS -->
+    <script src="{% static 'js/scripts.js' %}" defer></script>  <!-- Enlace al JS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Listado de Habitaciones</h1>
+        <a href="{% url 'crear_habitacion' %}" class="btn">Agregar Nueva Habitación</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Tipo</th>
+                    <th>Capacidad</th>
+                    <th>Precio por Noche</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for habitacion in habitaciones %}
+                <tr>
+                    <td>{{ habitacion.numero }}</td>
+                    <td>{{ habitacion.tipo }}</td>
+                    <td>{{ habitacion.capacidad }}</td>
+                    <td>{{ habitacion.precio_noche }}</td>
+                    <td>{{ habitacion.estado }}</td>
+                    <td>
+                        <a href="{% url 'editar_habitacion' habitacion.id %}">Editar</a>
+                        <form action="{% url 'eliminar_habitacion' habitacion.id %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta habitación?');">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No hay habitaciones disponibles.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

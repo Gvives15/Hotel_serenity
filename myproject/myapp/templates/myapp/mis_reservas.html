@@ -1,0 +1,135 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}
+    Mis Reservas
+{% endblock %}
+
+{% block content %}
+    <main class="container mt-5">
+        <section class="mis-reservas">
+            <h2 class="text-center">Mis Reservas</h2>
+
+            <!-- Tabla de Reservas Pendientes -->
+            <h3 class="text-center">Reservas Pendientes de Pago</h3>
+            {% if reservas_pendientes %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Número de Habitación</th>
+                                <th>Fecha de Ingreso</th>
+                                <th>Fecha de Salida</th>
+                                <th>Número de Huéspedes</th>
+                                <th>Precio Total</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reserva in reservas_pendientes %}
+                                <tr>
+                                    <td>{{ reserva.habitacion.numero }}</td>
+                                    <td>{{ reserva.fecha_inicio }}</td>
+                                    <td>{{ reserva.fecha_fin }}</td>
+                                    <td>{{ reserva.numero_huespedes }}</td>
+                                    <td>${{ reserva.precio_total }}</td>
+                                    <td>{{ reserva.estado }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 class="text-center">Total a Pagar: <span class="text-success">${{ total_pago_pendientes }}</span></h4>
+
+                <!-- Botón para procesar el pago -->
+                <form action="{% url 'procesar_pago' %}" method="POST" id="payment-form" class="text-center">
+                    {% csrf_token %}
+                    <input type="hidden" name="total_pago" value="{{ total_pago_pendientes }}">
+                    <input type="hidden" name="reserva_id" value="{{ reservas_pendientes.0.id }}">  <!-- ID de la primera reserva -->
+                    <button type="submit" class="btn btn-primary btn-lg">Pagar Ahora</button>
+                </form>
+            {% else %}
+                <div class="alert alert-warning text-center mt-4">
+                    <p>No tienes reservas pendientes de pago.</p>
+                </div>
+            {% endif %}
+
+            <!-- Tabla de Reservas Completadas -->
+            <h3 class="text-center mt-5">Reservas Completadas</h3>
+            {% if reservas_completadas %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Número de Habitación</th>
+                                <th>Fecha de Ingreso</th>
+                                <th>Fecha de Salida</th>
+                                <th>Número de Huéspedes</th>
+                                <th>Precio Total</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reserva in reservas_completadas %}
+                                <tr>
+                                    <td>{{ reserva.habitacion.numero }}</td>
+                                    <td>{{ reserva.fecha_inicio }}</td>
+                                    <td>{{ reserva.fecha_fin }}</td>
+                                    <td>{{ reserva.numero_huespedes }}</td>
+                                    <td>${{ reserva.precio_total }}</td>
+                                    <td>{{ reserva.estado }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-warning text-center mt-4">
+                    <p>No tienes reservas completadas.</p>
+                </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('{{ STRIPE_TEST_PUBLIC_KEY }}');
+        var elements = stripe.elements();
+        var cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            stripe.createToken(cardElement).then(function(result) {
+                if (result.error) {
+                    // Mostrar error en el formulario
+                    document.getElementById('card-errors').textContent = result.error.message;
+                } else {
+                    // Enviar el token a tu servidor
+                    var hiddenInput = document.createElement('input');
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('name', 'stripeToken');
+                    hiddenInput.setAttribute('value', result.token.id);
+                    form.appendChild(hiddenInput);
+                    form.submit();
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* Estilos adicionales si es necesario */
+        #card-element {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        #card-errors {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}

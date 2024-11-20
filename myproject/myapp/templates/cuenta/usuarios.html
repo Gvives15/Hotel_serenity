@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="{% static 'css/styles_c_h.css' %}">
+    <script src="{% static 'js/java.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'habitaciones' %}">Habitaciones y Pabellones</a></li>
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="perfil-usuario">
+            <h2>Mi Perfil</h2>
+            <div class="usuario-info">
+                <div class="usuario-detalles">
+                    <h3>Información Personal</h3>
+                    <p>Nombre: {{ request.user.first_name }} {{ request.user.last_name }}</p>
+                    <p>Email: {{ request.user.email }}</p>
+                </div>
+
+                <div class="usuario-acciones">
+                    <h3>Acciones Rápidas</h3>
+                    <ul>
+                        <li><a href="{% url 'mis_reservas' %}" class="btn">Mis Reservas</a></li>
+                        <li><a href="{% url 'carrito' %}" class="btn">Mi Carrito</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}" class="btn">Cerrar Sesión</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+            {% if reservas_recientes %}
+            <div class="reservas-recientes">
+                <h3>Reservas Recientes</h3>
+                <ul>
+                    {% for reserva in reservas_recientes %}
+                    <li>
+                        <p>Reserva #{{ reserva.id }}</p>
+                        <p>Fecha: {{ reserva.fecha_ingreso }} - {{ reserva.fecha_salida }}</p>
+                        <p>Estado: {{ reserva.estado }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

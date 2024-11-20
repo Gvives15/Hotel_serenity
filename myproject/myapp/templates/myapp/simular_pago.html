@@ -1,0 +1,26 @@
+<!-- templates/myapp/simular_pago.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simular Pago</title>
+    <link rel="stylesheet" href="{% static 'css/stylesc_h.css' %}"> <!-- Asegúrate de tener tu CSS en la carpeta estática -->
+</head>
+<body>
+    <div class="container">
+        <h1>Simular Pago</h1>
+        <form method="POST" action="{% url 'simular_pago' %}">
+            {% csrf_token %}
+            <input type="hidden" name="reserva_id" value="{{ reserva.id }}">
+            <div class="form-group">
+                <label for="total_pago">Total a Pagar:</label>
+                <input type="text" name="total_pago" id="total_pago" required>
+            </div>
+            <button type="submit">Realizar Pago</button>
+        </form>
+        <a href="{% url 'mis_reservas' %}">Volver a Mis Reservas</a>
+    </div>
+</body>
+</html>

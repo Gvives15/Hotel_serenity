@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Habitación</title>
+    <link rel="stylesheet" href="{% static 'css/styles_myadmin.css' %}">  <!-- Enlace al CSS -->
+    <script src="{% static 'js/scripts.js' %}" defer></script>  <!-- Enlace al JS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Nueva Habitación</h1>
+        <form action="{% url 'crear_habitacion' %}" method="POST">  <!-- URL para crear habitación -->
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Renderiza el formulario automáticamente -->
+            <button type="submit">Crear Habitación</button>
+            <a href="{% url 'listar_habitaciones' %}" class="btn-cancel">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

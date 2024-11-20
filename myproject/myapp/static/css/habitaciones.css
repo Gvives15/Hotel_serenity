@@ -1,0 +1,130 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos del main */
+main {
+    padding: 20px;
+}
+
+.habitaciones {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos de filtros */
+.filtros {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filtro-form {
+    display: inline-block;
+}
+
+.filtro-select {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos de la lista de habitaciones */
+.lista-habitaciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.habitacion-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    width: calc(33% - 20px); /* Tres tarjetas por fila */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.habitacion-card:hover {
+    transform: scale(1.05);
+}
+
+.habitacion-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.habitacion-info {
+    margin-top: 10px;
+}
+
+.habitacion-info h3 {
+    margin: 10px 0;
+}
+
+.precio {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.habitacion-acciones {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.no-habitaciones {
+    text-align: center;
+    font-size: 18px;
+    color: #ff0000;
+}

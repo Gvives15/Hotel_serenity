@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Pabellón</title>
+    <link rel="stylesheet" href="{% static 'css/styles_c_h.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'habitaciones' %}">Habitaciones y Pabellones</a></li>
+                <li><a href="{% url 'ver_carrito' %}">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="detalle-producto">
+            <h2>{{ pabellon.nombre }}</h2>
+            <img src="{{ pabellon.imagen_url }}" alt="{{ pabellon.nombre }}">
+            <p>{{ pabellon.descripcion }}</p>
+            <p>Precio: ${{ pabellon.precio }}</p>
+            <a href="{% url 'agregar_al_carrito' 'pabellon' pabellon.id %}" class="btn">Agregar al Carrito</a>
+        </section>
+    </main>
+</body>
+</html>

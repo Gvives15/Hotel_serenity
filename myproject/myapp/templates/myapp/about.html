@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros</title>
+    <link rel="stylesheet" href="{% static 'css/styles_c_h.css' %}">
+    <script src="{% static 'js/java.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'listar_habitaciones_pabellones' %}">Habitaciones y Pabellones</a></li>
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="about">
+            <h2>Sobre Nosotros</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="{% static 'img/hotel.jpg' %}" alt="Nuestro Hotel">
+                </div>
+                <div class="about-text">
+                    <h3>Nuestra Historia</h3>
+                    <p>Bienvenidos al Hotel HS, donde la comodidad y el lujo se encuentran con la hospitalidad excepcional.</p>
+                    
+                    <h3>Nuestra Misión</h3>
+                    <p>Proporcionar a nuestros huéspedes una experiencia inolvidable, combinando servicios de primera clase con atención personalizada.</p>
+                    
+                    <h3>Nuestros Valores</h3>
+                    <ul>
+                        <li>Excelencia en el servicio</li>
+                        <li>Compromiso con la calidad</li>
+                        <li>Atención personalizada</li>
+                        <li>Respeto al medio ambiente</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

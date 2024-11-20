@@ -1,0 +1,15 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}
+    Error en el Pago
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center">Error al Procesar el Pago</h2>
+        <p class="text-center">Lo sentimos, ha ocurrido un error al procesar tu pago. Por favor, intenta nuevamente.</p>
+        <div class="text-center">
+            <a href="{% url 'mis_reservas' %}" class="btn btn-danger">Volver a Mis Reservas</a>
+        </div>
+    </div>
+{% endblock %}

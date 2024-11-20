@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitaciones</title>
+    <link rel="stylesheet" href="{% static 'css/habitaciones.css' %}">
+    <script src="{% static 'js/java.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'habitaciones' %}">Habitaciones y Pabellones</a></li>
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="habitaciones">
+            <h2>Nuestras Habitaciones</h2>
+            
+            <div class="filtros">
+                <form method="get" class="filtro-form">
+                    <select name="tipo" class="filtro-select">
+                        <option value="">Todos los tipos</option>
+                        {% for tipo in tipos_habitaciones %}
+                            <option value="{{ tipo.0 }}">{{ tipo.1 }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn">Filtrar</button>
+                </form>
+            </div>
+
+            <div class="lista-habitaciones">
+                {% if habitaciones %}
+                    {% for habitacion in habitaciones %}
+                        <div class="habitacion-card">
+                            {% if habitacion.imagen %}
+                                <img src="{{ habitacion.imagen.url }}" alt="{{ habitacion.descripcion }}">
+                            {% else %}
+                                <img src="{% static 'images/default.jpg' %}" alt="Imagen no disponible">
+                            {% endif %}
+                            <div class="habitacion-info">
+                                <h3>Habitación {{ habitacion.numero }}</h3>
+                                <p>Tipo: {{ habitacion.tipo }}</p>
+                                <p>{{ habitacion.descripcion }}</p>
+                                <p class="precio">Desde ${{ habitacion.precio_noche }} por noche</p>
+                                <p>Capacidad: {{ habitacion.capacidad }} personas</p>
+                                <div class="habitacion-acciones">
+                                    <a href="{% url 'detalle_habitacion' habitacion.id %}" class="btn">Ver Detalles</a>
+                                    <a href="{% url 'reservar_habitacion' habitacion.id %}" class="btn">Reservar</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-habitaciones">No hay habitaciones disponibles en este momento.</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>

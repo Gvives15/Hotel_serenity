@@ -1,0 +1,38 @@
+<!-- templates/myadmin/habitaciones.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Habitaciones</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Habitaciones</h1>
+    <a href="{% url 'crear_habitacion' %}">Crear Habitación</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for habitacion in habitaciones %}
+            <tr>
+                <td>{{ habitacion.numero }}</td>
+                <td>{{ habitacion.tipo }}</td>
+                <td>{{ habitacion.precio }}</td>
+                <td>
+                    <a href="{% url 'editar_habitacion' habitacion.id %}">Editar</ ```html
+                    </a>
+                    <a href="{% url 'eliminar_habitacion' habitacion.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

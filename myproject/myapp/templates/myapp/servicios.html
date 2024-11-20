@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Servicios</title>
+    <link rel="stylesheet" href="{% static 'css/styles_c_h.css' %}">
+    <script src="{% static 'js/java.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'habitaciones' %}">Habitaciones</a></li>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="servicios">
+            <h2>Nuestros Servicios</h2>
+            {% if servicios %}
+                <ul class="lista-servicios">
+                    {% for servicio in servicios %}
+                        <li class="item-servicio">
+                            <h3>{{ servicio.nombre }}</h3>
+                            <p>{{ servicio.descripcion }}</p>
+                            <p>Precio: ${{ servicio.precio }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="mensaje-vacio">No hay servicios disponibles en este momento.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

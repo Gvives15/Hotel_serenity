@@ -1,0 +1,99 @@
+/* Estilos generales */
+body {
+    background-color: #f8f9fa; /* Color de fondo claro */
+    font-family: Arial, sans-serif;
+    margin: 0; /* Eliminar márgenes por defecto */
+}
+
+/* Estilos del contenedor del menú lateral */
+.sidebar {
+    background-color: #343a40; /* Color de fondo del menú lateral */
+    color: #ffffff; /* Color del texto */
+    height: 100vh; /* Altura completa */
+    position: fixed; /* Fijo en la pantalla */
+    transition: all 0.3s ease; /* Transición suave */
+    z-index: 1000; /* Asegurarse de que esté por encima del contenido */
+}
+
+/* Estilos de los elementos del menú */
+.list-group-item {
+    color: #ffffff; /* Color del texto de los elementos del menú */
+    transition: background-color 0.3s; /* Transición suave para el fondo */
+}
+
+.list-group-item:hover {
+    background-color: #495057; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilos del contenido principal */
+#page-content-wrapper {
+    margin-left: 250px; /* Espacio para el menú lateral */
+    transition: margin-left 0.3s ease; /* Transición suave */
+    padding: 20px; /* Espaciado interno */
+}
+
+#wrapper.toggled #page-content-wrapper {
+    margin-left: 0; /* Sin margen cuando el menú está oculto */
+}
+
+/* Estilos del botón de alternar menú */
+#menu-toggle {
+    margin-left: 15px; /* Espaciado a la izquierda */
+}
+
+/* Estilos del encabezado del contenido */
+.content h1 {
+    color: #343a40; /* Color del encabezado */
+    font-size: 2rem; /* Tamaño de fuente del encabezado */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+.content p {
+    color: #6c757d; /* Color del texto del párrafo */
+    font-size: 1rem; /* Tamaño de fuente del párrafo */
+}
+
+/* Estilos para el navbar */
+.navbar {
+    background-color: #ffffff; /* Color de fondo del navbar */
+    border-bottom: 1px solid #dee2e6; /* Línea inferior */
+}
+
+.nav-link {
+    color: #343a40; /* Color del texto de los enlaces */
+}
+
+.nav-link:hover {
+    color: #007bff; /* Color del texto al pasar el mouse */
+}
+
+/* Estilos para el menú desplegable */
+.dropdown-menu {
+    background-color: #343a40; /* Color de fondo del menú desplegable */
+}
+
+.dropdown-item {
+    color: #ffffff; /* Color del texto de los elementos del menú desplegable */
+}
+
+.dropdown-item:hover {
+    background-color: #495057; /* Color de fondo al pasar el mouse en el menú desplegable */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        position: absolute;
+        z-index: 1000;
+        left: -250px; /* Ocultar el menú lateral */
+        transition: left 0.3s;
+    }
+
+    #sidebar-wrapper.active {
+        left: 0; /* Mostrar el menú lateral */
+    }
+
+    #page-content-wrapper {
+        margin-left: 0; /* Sin margen cuando el menú está oculto */
+    }
+}

@@ -1,0 +1,365 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}Inicio - Hotel HS{% endblock %}
+
+{% block content %}
+ <!-- Hero Section Mejorado usando Bootstrap -->
+ <div class="hero-section text-center text-white py-5 mb-5 position-relative d-flex align-items-center justify-content-center" 
+ style="background-image: url('https://via.placeholder.com/1920x600'); background-size: cover; background-position: center; height: 40vh;">
+<div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div> <!-- Capa de superposición oscura -->
+
+<!-- Contenido de la Hero Section -->
+<div class="container position-relative z-1">
+    <h1 class="display-3 fw-bold mb-3">Bienvenido a Hotel Serenity</h1>
+    <p class="lead mb-4">Descubre el confort y la elegancia en cada una de nuestras habitaciones</p>
+    <a href="{% url 'habitaciones' %}" class="btn btn-primary btn-lg px-4">Ver Habitaciones</a>
+</div>
+</div>
+
+    <!-- Sección de Servicios Destacados -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Nuestros Servicios</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="icon-circle bg-primary text-white mb-3">
+                            <i class="fas fa-bed fa-3x"></i>
+                        </div>
+                        <h4 class="card-title">Habitaciones Confortables</h4>
+                        <p class="card-text">Disfruta de nuestras habitaciones completamente equipadas para tu comodidad.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="icon-circle bg-primary text-white mb-3">
+                            <i class="fas fa-wifi fa-3x"></i>
+                        </div>
+                        <h4 class="card-title">WiFi Gratuito</h4>
+                        <p class="card-text">Mantente conectado con nuestro servicio de internet de alta velocidad.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="icon-circle bg-primary text-white mb-3">
+                            <i class="fas fa-concierge-bell fa-3x"></i>
+                        </div>
+                        <h4 class="card-title">Servicio a la Habitación</h4>
+                        <p class="card-text">Disfruta de nuestro servicio a la habitación las 24 horas del día.</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Lavandería -->
+             <div class="col-md-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="icon-circle bg-primary text-white mb-3">
+                            <i class="fas fa-tshirt fa-3x"></i>
+                        </div>
+                        <h4 class="card-title">Lavandería</h4>
+                        <p class="card-text">Servicio de lavandería y tintorería para que siempre estés impecable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sala de Entretenimiento -->
+            <div class="col-md-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="icon-circle bg-primary text-white mb-3">
+                            <i class="fas fa-gamepad fa-3x"></i>
+                        </div>
+                        <h4 class="card-title">Sala de Entretenimiento</h4>
+                        <p class="card-text">Una sala equipada con juegos, películas y entretenimiento para todas las edades.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Piletas -->
+            <div class="col-md-4">
+                <div class="card service-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="icon-circle bg-primary text-white mb-3">
+                            <i class="fas fa-swimming-pool fa-3x"></i>
+                        </div>
+                        <h4 class="card-title">Piletas</h4>
+                        <p class="card-text">Relájate en nuestras piletas climatizadas, disponibles para todos los huéspedes.</p>
+                    </div>
+                </div>
+            </div>
+         <!-- Spa & Wellness -->
+            <div class="col-md-4">
+               <div class="card service-card h-100 border-0 shadow-sm">
+                   <div class="card-body text-center">
+                       <div class="icon-circle bg-primary text-white mb-3">
+                           <i class="fas fa-spa fa-3x"></i>
+                       </div>
+                       <h4 class="card-title">Spa & Wellness</h4>
+                       <p class="card-text">Relájate y rejuvenece en nuestro exclusivo spa con masajes y tratamientos de belleza.</p>
+                   </div>
+               </div>
+            </div>
+
+        <!-- Gimnasio -->
+        <div class="col-md-4">
+            <div class="card service-card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="icon-circle bg-primary text-white mb-3">
+                        <i class="fas fa-dumbbell fa-3x"></i>
+                    </div>
+                    <h4 class="card-title">Gimnasio</h4>
+                    <p class="card-text">Mantente en forma durante tu estancia con nuestro gimnasio completamente equipado.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurante Gourmet -->
+        <div class="col-md-4">
+            <div class="card service-card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="icon-circle bg-primary text-white mb-3">
+                        <i class="fas fa-utensils fa-3x"></i>
+                    </div>
+                    <h4 class="card-title">Restaurante Gourmet</h4>
+                    <p class="card-text">Disfruta de una experiencia gastronómica única en nuestro restaurante de alta cocina.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Sección de Reseñas de Clientes -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Lo que dicen nuestros huéspedes</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-3">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../../static/imagenes/perfil1" alt="Foto de reseña" class="rounded-circle me-3">
+                        <div>
+                            <h5 class="mb-0">Juan Pérez</h5>
+                            <small class="text-muted">Agosto 2024</small>
+                        </div>
+                    </div>
+                    <p class="card-text">“Excelente servicio y atención al detalle. Las habitaciones son muy cómodas y el ambiente del hotel es maravilloso.”</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-3">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://via.placeholder.com/50" alt="Foto de reseña" class="rounded-circle me-3">
+                        <div>
+                            <h5 class="mb-0">María López</h5>
+                            <small class="text-muted">Julio 2024</small>
+                        </div>
+                    </div>
+                    <p class="card-text">“Un lugar espectacular para relajarse. Me encantó el spa y las instalaciones en general. Definitivamente regresaré.”</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-3">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://via.placeholder.com/50" alt="Foto de reseña" class="rounded-circle me-3">
+                        <div>
+                            <h5 class="mb-0">Carlos Ramírez</h5>
+                            <small class="text-muted">Junio 2024</small>
+                        </div>
+                    </div>
+                    <p class="card-text">“El restaurante es increíble, y la habitación estaba impecable. Es un lugar ideal para unas vacaciones en familia.”</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sección de Galería de Fotos -->
+<section class="container my-5">
+    <h2 class="text-center mb-4">Galería de Fotos</h2>
+    <div class="row g-3">
+        <!-- Foto 1 -->
+        <div class="col-md-4">
+            <a href="https://via.placeholder.com/800x600" data-bs-toggle="modal" data-bs-target="#photoModal1">
+                <img src="../../static/imagenes/" class="img-fluid rounded shadow-sm" alt="Foto de la galería 1">
+            </a>
+        </div>
+        <!-- Foto 2 -->
+        <div class="col-md-4">
+            <a href="https://via.placeholder.com/800x600" data-bs-toggle="modal" data-bs-target="#photoModal2">
+                <img src="https://via.placeholder.com/400x300" class="img-fluid rounded shadow-sm" alt="Foto de la galería 2">
+            </a>
+        </div>
+        <!-- Foto 3 -->
+        <div class="col-md-4">
+            <a href="https://via.placeholder.com/800x600" data-bs-toggle="modal" data-bs-target="#photoModal3">
+                <img src="https://via.placeholder.com/400x300" class="img-fluid rounded shadow-sm" alt="Foto de la galería 3">
+            </a>
+        </div>
+        <!-- Foto 4 -->
+        <div class="col-md-4">
+            <a href="https://via.placeholder.com/800x600" data-bs-toggle="modal" data-bs-target="#photoModal4">
+                <img src="https://via.placeholder.com/400x300" class="img-fluid rounded shadow-sm" alt="Foto de la galería 4">
+            </a>
+        </div>
+        <!-- Foto 5 -->
+        <div class="col-md-4">
+            <a href="https://via.placeholder.com/800x600" data-bs-toggle="modal" data-bs-target="#photoModal5">
+                <img src="https://via.placeholder.com/400x300" class="img-fluid rounded shadow-sm" alt="Foto de la galería 5">
+            </a>
+        </div>
+        <!-- Foto 6 -->
+        <div class="col-md-4">
+            <a href="https://via.placeholder.com/800x600" data-bs-toggle="modal" data-bs-target="#photoModal6">
+                <img src="https://via.placeholder.com/400x300" class="img-fluid rounded shadow-sm" alt="Foto de la galería 6">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Modales para la vista ampliada de cada foto -->
+<!-- Modal Foto 1 -->
+<div class="modal fade" id="photoModal1" tabindex="-1" aria-labelledby="photoModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="https://via.placeholder.com/800x600" class="img-fluid" alt="Foto de la galería 1 ampliada">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Foto 2 -->
+<div class="modal fade" id="photoModal2" tabindex="-1" aria-labelledby="photoModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="https://via.placeholder.com/800x600" class="img-fluid" alt="Foto de la galería 2 ampliada">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Foto 3 -->
+<div class="modal fade" id="photoModal3" tabindex="-1" aria-labelledby="photoModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="https://via.placeholder.com/800x600" class="img-fluid" alt="Foto de la galería 3 ampliada">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="photoModal4" tabindex="-1" aria-labelledby="photoModalLabel4" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="https://via.placeholder.com/800x600" class="img-fluid" alt="Foto de la galería 4 ampliada">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="photoModal5" tabindex="-1" aria-labelledby="photoModalLabel5" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="https://via.placeholder.com/800x600" class="img-fluid" alt="Foto de la galería 5 ampliada">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="photoModa6" tabindex="-1" aria-labelledby="photoModalLabel6" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="https://via.placeholder.com/800x600" class="img-fluid" alt="Foto de la galería 6 ampliada">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de Promociones y Planes -->
+<section class="container my-5">
+    <h2 class="text-center mb-4 text-primary">Nuestras Promociones</h2>
+    <div class="row g-4">
+
+        <!-- Promoción 1 -->
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Promoción 1">
+                <div class="card-body">
+                    <h5 class="card-title text-borgoña">Oferta de Fin de Semana</h5>
+                    <p class="card-text">Disfruta de un 30% de descuento en estancias de fin de semana. Relájate y disfruta de la tranquilidad de nuestro hotel.</p>
+                    <a href="#" class="btn btn-dorado">Ver más</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promoción 2 -->
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Promoción 2">
+                <div class="card-body">
+                    <h5 class="card-title text-borgoña">Paquete Familiar</h5>
+                    <p class="card-text">Aprovecha nuestro paquete familiar con descuentos exclusivos para familias de hasta 4 personas.</p>
+                    <a href="#" class="btn btn-dorado">Ver más</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promoción 3 -->
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Promoción 3">
+                <div class="card-body">
+                    <h5 class="card-title text-borgoña">Estancia Larga</h5>
+                    <p class="card-text">Si planeas una estancia larga, ¡esta es tu oportunidad! Descuentos especiales para estancias de más de 7 noches.</p>
+                    <a href="#" class="btn btn-dorado">Ver más</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Sección de Planes -->
+<section class="container my-5">
+    <h2 class="text-center mb-4 text-primary">Planes Especiales</h2>
+    <div class="row g-4">
+
+        <!-- Plan 1 -->
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-borgoña">Plan de Bienvenida</h5>
+                    <p class="card-text">Incluye alojamiento con desayuno gratuito y acceso a la piscina. Ideal para quienes nos visitan por primera vez.</p>
+                    <a href="#" class="btn btn-dorado">Más información</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-borgoña">Plan Romance</h5>
+                    <p class="card-text">Escápate con tu pareja y disfruta de una estancia romántica con cena incluida y servicio especial de spa.</p>
+                    <a href="#" class="btn btn-dorado">Más información</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-borgoña">Plan Corporativo</h5>
+                    <p class="card-text">Este plan está diseñado para empresas, con tarifas especiales para grupos y servicios de sala de reuniones.</p>
+                    <a href="#" class="btn btn-dorado">Más información</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
